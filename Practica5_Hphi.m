@@ -46,7 +46,7 @@ for n = 1: 4
 
         t_TMnm = 1;
         coeficiente = (i*n*(f0/fc_TMnm)/kc*a)*sqrt(1-(f0/fc_TMnm)^2);
-        for t_TMnm = 1 : 1: 10
+        for t_TMnm = 1 : 10: 100
             z_TMnm = lambdac_TMnm*t_TMnm; %Multiplos del doble de la longitud de onda, z = 0-5m,0-10m,0-100m (dependiendo)
             for ind = 1:length(X_TMnm)
                 for jnd = 1:length(phi)
