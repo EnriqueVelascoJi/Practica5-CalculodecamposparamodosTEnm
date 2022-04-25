@@ -44,8 +44,13 @@ for n = 1: 4
         X_TMnm = h_TMnm.*r;
         z_TMnm = lambdac_TMnm*2; %Multiplos del doble de la longitud de onda, z = 0-5m,0-10m,0-100m (dependiendo)
 
+<<<<<<< HEAD
         t_TMnm = 1;
         for z_TMnm = 1 : 1: 10
+=======
+
+        t_TMnm = 1;
+>>>>>>> acdf74cbf5e60aa162b82ed80ec219b7b4f99cde
         for ind = 1:length(X_TMnm)
             for jnd = 1:length(phi)
                 Ez_TMnm(ind,jnd) = besselj((n-1),X_TMnm(ind))*(cos((n-1)*phi(jnd)) + sin((n-1)*phi(jnd))) * exp(i*BetaLambda_TMnm*z_TMnm) * exp(i*omegac*t_TMnm); 
@@ -55,6 +60,7 @@ for n = 1: 4
 
         [x3,y3,z3] = pol2cart(PHI1,R1,real(Ez_TMnm));
 
+<<<<<<< HEAD
         mesh(x3,y3,z3);
         view(45,45);
         xlabel('r[m]');
@@ -64,6 +70,16 @@ for n = 1: 4
         pause(0.5);
        end
        figure();
+=======
+        figure();
+        mesh(x3,y3,z3);
+        view(90,90);
+        xlabel('r[m]');
+        ylabel('\phi [°]');
+        zlabel("E_z{TM"+(n-1)+m+"}");
+        title("E_z{TM"+(n-1)+m+"}, z ="+z_TMnm+"m, t = "+t_TMnm+"s");
+      
+>>>>>>> acdf74cbf5e60aa162b82ed80ec219b7b4f99cde
    end
 end
 
