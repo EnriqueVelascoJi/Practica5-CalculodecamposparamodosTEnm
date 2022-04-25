@@ -44,8 +44,8 @@ for n = 1: 4
         X_TMnm = h_TMnm.*r;
         z_TMnm = lambdac_TMnm*2; %Multiplos del doble de la longitud de onda, z = 0-5m,0-10m,0-100m (dependiendo)
 
+        for z_TMnm = 1:1:5
         t_TMnm = 1;
-
         coeficiente = i*((miu/eps)^(1/2))*(f0/fc_TMnm);
 
         for ind = 1:length(X_TMnm)
@@ -57,13 +57,16 @@ for n = 1: 4
 
         [x3,y3,z3] = pol2cart(PHI1,R1,real(Ephi_TMnm));
 
-        figure();
+        
         mesh(x3,y3,z3);
-        view(90,90);
+        view(45,45);
         xlabel('r[m]');
         ylabel('\phi [°]');
-        zlabel("E_r{TM"+(n-1)+m+"}");
-        title("E_r{TM"+(n-1)+m+"}, z ="+z_TMnm+"m, t = "+t_TMnm+"s");
+        zlabel("E_r{TE"+(n-1)+m+"}");
+        title("E_r{TE"+(n-1)+m+"}, z ="+z_TMnm+"m, t = "+t_TMnm+"s");
+        pause(1);
+        end
+        figure();
    end
 end
 

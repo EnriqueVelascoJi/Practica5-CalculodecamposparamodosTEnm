@@ -44,29 +44,26 @@ for n = 1: 4
         X_TMnm = h_TMnm.*r;
         z_TMnm = lambdac_TMnm*2; %Multiplos del doble de la longitud de onda, z = 0-5m,0-10m,0-100m (dependiendo)
 
-        for z_TMnm = 1:1:5
         t_TMnm = 1;
-
-        coeficiente = (i*((miu/eps)^(1/2))*(n-1)*(f0/fc_TMnm)) / (kc*a);
-
+        for z_TMnm = 1 : 1: 10
         for ind = 1:length(X_TMnm)
             for jnd = 1:length(phi)
-                Er_TMnm(ind,jnd) = coeficiente*besselj((n-1),X_TMnm(ind))*(sin((n-1)*phi(jnd))- cos((n-1)*phi(jnd))) * exp(i*BetaLambda_TMnm*z_TMnm) * exp(i*omegac*t_TMnm); 
+                Ez_TMnm(ind,jnd) = besselj((n-1),X_TMnm(ind))*(cos((n-1)*phi(jnd)) + sin((n-1)*phi(jnd))) * exp(i*BetaLambda_TMnm*z_TMnm) * exp(i*omegac*t_TMnm); 
             end
         end
 
 
-        [x3,y3,z3] = pol2cart(PHI1,R1,real(Er_TMnm));
+        [x3,y3,z3] = pol2cart(PHI1,R1,real(Ez_TMnm));
 
         mesh(x3,y3,z3);
         view(45,45);
         xlabel('r[m]');
         ylabel('\phi [°]');
-        zlabel("E_r{TE"+(n-1)+m+"}");
-        title("E_r{TE"+(n-1)+m+"}, z ="+z_TMnm+"m, t = "+t_TMnm+"s");
-        pause(1);
-        end
-        figure();
+        zlabel("H_z{TE"+(n-1)+m+"}");
+        title("H_z{TE"+(n-1)+m+"}, z ="+z_TMnm+"m, t = "+t_TMnm+"s");
+        pause(0.5);
+       end
+       figure();
    end
 end
 
